@@ -7,6 +7,7 @@ import com.capstone.payments.entities.Bill;
 import com.capstone.payments.entities.RegBillers;
 
 public interface BillService {
+	Bill createNewBill(Bill bill);
 	List<Bill> viewSheduledBillPayments(int accountNo);
 	List<RegBillers> getRegisteredBillers(int accountNo);
 

@@ -69,5 +69,10 @@ public class BillServiceImpl implements BillService{
 		}
 		return allBills;
 	}
+	
+	public Bill createNewBill(Bill bill) {
+		billRepository.save(bill);
+		return bill;
+	}
 
 }
