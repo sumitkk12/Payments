@@ -53,12 +53,9 @@ public class BillController {
 	
 	@PostMapping("/createNewBill")
 	public ResponseEntity<?> createNewBill(@RequestBody Bill bill){
-		int roleId=2;
+		int roleId=1;
 		try {
 			if(roleId == 1) {
-				bill.setBillerCode("B001");
-				bill.setConsumerNo(1);
-				bill.setStatus("PENDING");
 				System.out.println(bill);
 				return new ResponseEntity<>(billService.createNewBill(bill),HttpStatus.CREATED);
 			}
