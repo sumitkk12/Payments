@@ -23,5 +23,10 @@ public class BillController {
 		int accountNo=1;
 		return billService.viewPaymentsDoneForAll(accountNo);
 	}
-	
+	@GetMapping("/view-payments-done-for-selected-biller")
+	public List<Bill> viewPaymentsDoneForSelectedBiller(){
+		int accountNo=1;
+		String billerCode="B002";
+		return billService.viewPaymentsDoneForSelectedBiller(accountNo,billerCode);
+	}
 }

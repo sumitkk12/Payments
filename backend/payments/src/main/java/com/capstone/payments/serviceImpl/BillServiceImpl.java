@@ -51,4 +51,17 @@ public class BillServiceImpl implements BillService{
 		return allBills;
 	}
 
+	@Override
+	public List<Bill> viewPaymentsDoneForSelectedBiller(int accountNo, String billerCode) {
+		// find registered bills
+		List<RegBillers> regBillers=regBillersRepository.findByaccountNoAndBillerCode(accountNo,billerCode);
+		// find bills with consumer no from reg bills and status is pending
+		List<Bill> allBills=new ArrayList<Bill>();
+		for(RegBillers r:regBillers) {
+			List<Bill> bills=billRepository.findByconsumerNoAndStatus(r.getConsumerNo(),"PAID");
+			allBills.addAll(bills);
+		}
+		return allBills;
+	}
+
 }
