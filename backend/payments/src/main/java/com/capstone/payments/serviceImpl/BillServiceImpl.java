@@ -17,4 +17,10 @@ public class BillServiceImpl implements BillService{
 	public List<RegBillers> getRegisteredBillers(int accountNo){
 		return rbr.findByaccountNo(accountNo);
 	}
+	
+	@Override
+	public RegBillers createNewRegisteredBillers(RegBillers regBiller) {
+		System.out.println(regBiller);
+		return rbr.save(regBiller);
+	}
 }
