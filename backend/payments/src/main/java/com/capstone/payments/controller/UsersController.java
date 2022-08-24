@@ -1,7 +1,5 @@
 package com.capstone.payments.controller;
 
-import javax.persistence.Entity;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,21 +15,13 @@ public class UsersController {
 	@Autowired
 	UsersService usersService;
 
-	// @PostMapping(value = "/hello", produces = "application/json", consumes =
-	// "application/json")
-	// public String hello(@RequestBody String user) {
-	// return user;
-	// }
-
 	@PostMapping(value = "/login")
 	public String login(@RequestBody Input inp) {
-		System.out.println("HELLO WORLD------------------------");
 		if (this.usersService.Login(inp.getUser(), inp.getPass())) {
 			user = inp.getUser();
-		}
-		// login failed
-		System.out.println("Login Failed");
-		return inp.getUser();
+		} else
+			System.out.println("Login Failed");
+		return user;
 	}
 	// Call Login(Username,Password)
 }
