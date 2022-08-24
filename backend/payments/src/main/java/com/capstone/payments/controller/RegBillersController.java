@@ -2,6 +2,8 @@ package com.capstone.payments.controller;
 import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,13 +15,22 @@ public class RegBillersController{
 	@Autowired
 	BillService billService;
 	@GetMapping("/RegisteredBillers/{accountNo}")
-	public List<RegBillers> getRegisteredBillers(@PathVariable int accountNo){
-		return this.billService.getRegisteredBillers(accountNo);
+	public ResponseEntity<?> getRegisteredBillers(@PathVariable int accountNo){
+		try {
+			return new ResponseEntity<>(this.billService.getRegisteredBillers(accountNo),HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>("unable to get registered billers for "+accountNo,HttpStatus.NOT_FOUND);
+		}
 	}
 	
 	@PostMapping("/RegisteredBillers")
-	public RegBillers putRegisteredBillers(@RequestBody RegBillers regBiller) {
+	public ResponseEntity<?> putRegisteredBillers(@RequestBody RegBillers regBiller) {
 		System.out.println(regBiller);
-		return this.billService.createNewRegisteredBillers(regBiller);
+		try {
+			return new ResponseEntity<>(this.billService.createNewRegisteredBillers(regBiller),HttpStatus.CREATED);
+		}catch (Exception e) {
+			return new ResponseEntity<>("Unable to register new biller for "+regBiller.getAccountNo(),HttpStatus.BAD_REQUEST);
+		}
+		
 	}
 }
