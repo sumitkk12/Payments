@@ -1,5 +1,7 @@
 package com.capstone.payments.service;
 
+import com.capstone.payments.entities.Users;
+
 public interface UsersService {
-	boolean Login(String loginId, String password);
+	Users Login(String loginId, String password);
 }

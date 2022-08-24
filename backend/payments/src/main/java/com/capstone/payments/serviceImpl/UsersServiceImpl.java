@@ -16,14 +16,14 @@ public class UsersServiceImpl implements UsersService {
 	UsersRepository usersRepository;
 
 	@Override
-	public boolean Login(String loginId, String password) {
+	public Users Login(String loginId, String password) {
 		List<Users> obj = usersRepository.findByloginId(loginId);
 		System.out.println(obj.get(0).getPassword());
 		System.out.println(password);
 		if (obj.get(0).getPassword().equals(password.toString())) {
-			return true;
+			return obj.get(0);
 		}
-		return false;
+		return null;
 	}
 
 }
