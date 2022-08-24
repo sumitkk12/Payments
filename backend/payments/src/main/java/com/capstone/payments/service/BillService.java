@@ -9,4 +9,5 @@ import com.capstone.payments.entities.RegBillers;
 public interface BillService {
 	List<Bill> viewSheduledBillPayments(int accountNo);
 	List<RegBillers> getRegisteredBillers(int accountNo);
+	List<Bill> viewPaymentsDoneForAll(int accountNo);
 }

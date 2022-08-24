@@ -18,4 +18,10 @@ public class BillController {
 		int accountNo=1;
 		return billService.viewSheduledBillPayments(accountNo);
 	}
+	@GetMapping("/view-payments-done-for-all")
+	public List<Bill> viewPaymentsDoneForAll(){
+		int accountNo=1;
+		return billService.viewPaymentsDoneForAll(accountNo);
+	}
+	
 }
