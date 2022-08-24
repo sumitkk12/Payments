@@ -17,7 +17,7 @@ public class MailServiceController {
     @Autowired
     private MailService senderService;
     @GetMapping("email/")
-    @EventListener(ApplicationReadyEvent.class)
+//    @EventListener(ApplicationReadyEvent.class)
     public void triggerMail() throws MessagingException {
         senderService.sendSimpleEmail("gauravkachare3@gmail.com",
                 "Test",

@@ -1,5 +1,6 @@
 package com.capstone.payments.controller;
 
+import com.capstone.payments.serviceImpl.CSV;
 import com.capstone.payments.serviceImpl.MailService;
 import com.opencsv.CSVWriter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,27 +19,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.capstone.payments.serviceImpl.CSV.createCsvDataSimple;
 
 
 @RestController
 public class CSVController {
     @Autowired
-    private CSVController CSV;
+  public CSV csv;
 
     @GetMapping("CSV/")
     @EventListener(ApplicationReadyEvent.class)
     public void GenerateCSV() throws IOException {
-        List<String[]> csvData = createCsvDataSimple();
+        List<String[]> csvData = csv.createCsvDataSimple();
 
         // default all fields are enclosed in double quotes
         // default separator is a comma
-        try (CSVWriter writer = new CSVWriter(new FileWriter("\\test\\test.csv"))) {
+        try (CSVWriter writer = new CSVWriter(new FileWriter("D:\\traning\\Payments\\backend\\payments\\src\\test\\test.csv"))) {
             writer.writeAll(csvData);
+        } catch (Exception e) {
+            System.out.println(e);
         }
     }
-
-
 }
-
-
