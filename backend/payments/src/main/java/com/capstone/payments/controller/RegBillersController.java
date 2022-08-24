@@ -12,9 +12,8 @@ import com.capstone.payments.entities.*;
 public class RegBillersController{
 	@Autowired
 	BillService billService;
-	@GetMapping("/RegisteredBillers")
-	public List<RegBillers> getRegisteredBillers(){
-		int accountNo=2;
+	@GetMapping("/RegisteredBillers/{accountNo}")
+	public List<RegBillers> getRegisteredBillers(@PathVariable int accountNo){
 		return this.billService.getRegisteredBillers(accountNo);
 	}
 	
