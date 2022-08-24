@@ -1,5 +1,6 @@
 package com.capstone.payments.controller;
 
+import java.security.PrivilegedActionException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,10 +62,13 @@ public class BillController {
 				System.out.println(bill);
 				return new ResponseEntity<>(billService.createNewBill(bill),HttpStatus.CREATED);
 			}
-			throw new Exception("Not Privilleged user");
-		}catch (Exception e) {
+			throw new SecurityException("Not privilleged user");
+		}catch (SecurityException e) {
 			// TODO: handle exception
 			return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+		}
+		catch (Exception e) {
+			return new ResponseEntity<>("Unable to create new bill",HttpStatus.BAD_REQUEST);
 		}
 			
 	}
