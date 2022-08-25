@@ -1,6 +1,7 @@
 package com.capstone.payments.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,5 +35,10 @@ public class TransactionsController {
 			billRepository.save(bill);
 		}
 		return "Paymentdone";
+	}
+	
+	@Scheduled(fixedRate = 3000)
+	public void paymentAuto() {
+		System.out.println("I am from Auto Payment");
 	}
 }
