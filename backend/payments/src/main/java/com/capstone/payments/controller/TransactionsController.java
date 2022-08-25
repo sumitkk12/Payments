@@ -2,6 +2,7 @@ package com.capstone.payments.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.*;
 
 import javax.naming.InsufficientResourcesException;
 
@@ -74,8 +75,11 @@ public class TransactionsController {
 		
 	}
 	
-	@Scheduled(cron="* /2 * * * *")
+	@Scheduled(fixedRate=1*60*1000)
 	public void paymentAuto() {
-		System.out.println("I am from Auto Payment");
+		List<Bill> list = billRepository.findBystatus("PENDING");
+		for(Bill b: list) {
+			System.out.println(b);
+		}
 	}
 }

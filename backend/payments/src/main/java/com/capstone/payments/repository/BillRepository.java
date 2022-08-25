@@ -11,4 +11,5 @@ public interface BillRepository extends JpaRepository<Bill, Integer>{
 	public List<Bill> findByconsumerNoAndStatus(int consumerNo,String status);
 	public List<Bill> findByconsumerNoAndBillerCodeAndStatus(int consumerNo, String billerCode, String status);
 	public Bill findBybillSeqId(int billSequenceId);
+	public List<Bill> findBystatus(String status);
 }
