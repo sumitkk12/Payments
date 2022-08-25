@@ -10,6 +10,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "logged_in_user")
 public class LoggedInUser {
+	public LoggedInUser() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")

@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capstone.payments.entities.Accounts;
 import com.capstone.payments.entities.Bill;
+import com.capstone.payments.entities.LoggedInUser;
 import com.capstone.payments.entities.RegBillers;
 import com.capstone.payments.repository.AccountsRepository;
+import com.capstone.payments.repository.LoggedInUserRepository;
 import com.capstone.payments.repository.RegBillersRepository;
 import com.capstone.payments.service.BillService;
 import com.capstone.payments.serviceImpl.MailService;
@@ -31,6 +33,10 @@ import net.bytebuddy.asm.Advice.This;
 public class BillController {
 	@Autowired
 	BillService billService;
+	@Autowired
+	UsersController usersController;
+	@Autowired
+	LoggedInUserRepository loggedInUserRepository;
 	@Autowired
     private MailService senderService;
 	@Autowired
@@ -67,7 +73,7 @@ public class BillController {
 	
 	@PostMapping("/createNewBill")
 	public ResponseEntity<?> createNewBill(@RequestBody Bill bill){
-		int roleId=1;
+		int roleId=Integer.parseInt(loggedInUserRepository.findAll().get(0).getRoleId());
 		try {
 			if(roleId == 1) {
 				Bill temp= billService.createNewBill(bill);
