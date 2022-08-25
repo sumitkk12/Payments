@@ -1,6 +1,8 @@
 package com.capstone.payments.controller;
 
 import java.security.PrivilegedActionException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +17,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capstone.payments.entities.Accounts;
 import com.capstone.payments.entities.Bill;
+import com.capstone.payments.entities.RegBillers;
+import com.capstone.payments.repository.AccountsRepository;
+import com.capstone.payments.repository.RegBillersRepository;
 import com.capstone.payments.service.BillService;
+import com.capstone.payments.serviceImpl.MailService;
 
 import net.bytebuddy.asm.Advice.This;
 
@@ -24,6 +31,13 @@ import net.bytebuddy.asm.Advice.This;
 public class BillController {
 	@Autowired
 	BillService billService;
+	@Autowired
+    private MailService senderService;
+	@Autowired
+	private RegBillersRepository regBillersRepository;
+	@Autowired
+	private AccountsRepository accRepository;
+	
 	@GetMapping("/view-sheduled-bill-payments/{accountNo}")
 	public ResponseEntity<?> viewSheduledBillPayments(@PathVariable int accountNo){
 		try {
@@ -56,8 +70,15 @@ public class BillController {
 		int roleId=1;
 		try {
 			if(roleId == 1) {
-				System.out.println(bill);
-				return new ResponseEntity<>(billService.createNewBill(bill),HttpStatus.CREATED);
+				Bill temp= billService.createNewBill(bill);
+				RegBillers bllr=regBillersRepository.findByconsumerNo(temp.getConsumerNo());
+				Accounts acount=accRepository.findByaccountNo(bllr.getAccountNo());
+				if(temp!=null) {
+					senderService.sendSimpleEmail(acount.getEmail(),
+			                "Payment Pending",
+			                "Your payment is pending for Rs."+ temp.getAmount()+" of biller" +temp.getBillerCode()+" due date " + temp.getDueDate());
+				}
+				return new ResponseEntity<>(temp,HttpStatus.CREATED);
 			}
 			throw new SecurityException("Not privilleged user");
 		}catch (SecurityException e) {
