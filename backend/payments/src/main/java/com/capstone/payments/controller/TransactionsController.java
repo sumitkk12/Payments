@@ -74,7 +74,7 @@ public class TransactionsController {
 		
 	}
 	
-	@Scheduled(fixedRate = 3000)
+	@Scheduled(cron="* /2 * * * *")
 	public void paymentAuto() {
 		System.out.println("I am from Auto Payment");
 	}
