@@ -23,22 +23,7 @@ public class RegBillers {
 	@Column(name = "autopay")
 	private int autoPay;
 	@Column(name = "autopaylimit")
-	private int autoPayLimit;
-	
-	public RegBillers() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public RegBillers(int billerSeqId, int accountNo, String billerCode, int consumerNo, int autoPay,
-			int autoPayLimit) {
-		super();
-		this.billerSeqId = billerSeqId;
-		this.accountNo = accountNo;
-		this.billerCode = billerCode;
-		this.consumerNo = consumerNo;
-		this.autoPay = autoPay;
-		this.autoPayLimit = autoPayLimit;
-	}
+	private int autopayLimit;
 	public int getBillerSeqId() {
 		return billerSeqId;
 	}
@@ -69,12 +54,32 @@ public class RegBillers {
 	public void setAutoPay(int autoPay) {
 		this.autoPay = autoPay;
 	}
-	public int getAutoPayLimit() {
-		return autoPayLimit;
+	public int getAutopayLimit() {
+		return autopayLimit;
 	}
-	public void setAutoPayLimit(int autoPayLimit) {
-		this.autoPayLimit = autoPayLimit;
+	public void setAutopayLimit(int autopayLimit) {
+		this.autopayLimit = autopayLimit;
 	}
+	public RegBillers(int billerSeqId, int accountNo, String billerCode, int consumerNo, int autoPay,
+			int autopayLimit) {
+		super();
+		this.billerSeqId = billerSeqId;
+		this.accountNo = accountNo;
+		this.billerCode = billerCode;
+		this.consumerNo = consumerNo;
+		this.autoPay = autoPay;
+		this.autopayLimit = autopayLimit;
+	}
+	public RegBillers() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	@Override
+	public String toString() {
+		return "RegBillers [billerSeqId=" + billerSeqId + ", accountNo=" + accountNo + ", billerCode=" + billerCode
+				+ ", consumerNo=" + consumerNo + ", autoPay=" + autoPay + ", autopayLimit=" + autopayLimit + "]";
+	}
+	
 	
 	
 	
