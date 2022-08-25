@@ -19,6 +19,7 @@ import com.capstone.payments.entities.Transaction;
 import com.capstone.payments.repository.AccountsRepository;
 import com.capstone.payments.repository.BillRepository;
 import com.capstone.payments.repository.TransactionsRepsitory;
+import com.capstone.payments.serviceImpl.MailService;
 
 @RestController
 public class TransactionsController {
@@ -28,6 +29,8 @@ public class TransactionsController {
 	AccountsRepository accRepository;
 	@Autowired
 	TransactionsRepsitory transRepository;
+	@Autowired
+    private MailService senderService;
 	
 	@PostMapping("/paymentManual")
 	public ResponseEntity<?> paymentManual(@RequestBody PaymentDetails pd) {
@@ -49,6 +52,9 @@ public class TransactionsController {
 				String customUtilDate = dateFormatter.format(currentUtilDate);
 				Transaction t=new Transaction(customUtilDate,bill.getAmount(),1,pd.getDescription(), bill.getBillSeqId());
 				transRepository.save(t);
+				senderService.sendSimpleEmail(acc.getEmail(),
+		                "Payment Done",
+		                "Your payment is done of Rs."+ bill.getAmount()+" of biller" +bill.getBillerCode()+" on " + customUtilDate);
 			}
 			return new ResponseEntity<>("Payment Done",HttpStatus.ACCEPTED);
 		}

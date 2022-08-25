@@ -25,7 +25,7 @@ public class CSVController {
         // default all fields are enclosed in double quotes
         // default separator is a comma
         try (CSVWriter writer = new CSVWriter(
-                new FileWriter("D:\\traning\\Payments\\backend\\payments\\src\\test\\test.csv"))) {
+                new FileWriter("C:\\Users\\Admin\\OneDrive\\Desktop\\Payments\\backend\\payments\\src\\test\\test.csv"))) {
             writer.writeAll(csvData);
         } catch (Exception e) {
             System.out.println(e);
