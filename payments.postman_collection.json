@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "105fdca3-eaf9-42e4-8856-036c63ea65c4",
+		"name": "Imarticus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13138756"
+	},
+	"item": [
+		{
+			"name": "view-sheduled-bill-payments",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/view-sheduled-bill-payments/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"view-sheduled-bill-payments",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view-payments-done-for-all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/view-payments-done-for-all/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"view-payments-done-for-all",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "RegisteredBillers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/RegisteredBillers/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"RegisteredBillers",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "view-payments-done-for-selected-biller",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/view-payments-done-for-selected-biller/1/B002",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"view-payments-done-for-selected-biller",
+						"1",
+						"B002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add Registered Billers",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"bllerSeqId\":10,\r\n\t\"accountNo\":2,\r\n\t\"billerCode\":\"B002\",\r\n\t\"consumerNo\":\"9000\",\r\n\t\"autoPay\":1,\r\n\t\"autopayLimit\":5000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/RegisteredBillers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"RegisteredBillers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "createNewBill",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"billerCode\":\"B001\",\r\n\t\"consumerNo\":\"9987\",\r\n\t\"amount\":1000,\r\n\t\"dueDate\":\"2022-08-29\",\r\n\t\"status\":\"PENDING\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/createNewBill",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"createNewBill"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "paymentManual",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\"billSequenceId\":35,\r\n\t\"accountNo\":1,\r\n\t\"description\":\"raj paid jio\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/paymentManual/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"paymentManual",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "export csv",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/CSV/1",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"CSV",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user\":\"101\",\r\n    \"pass\":\"abc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
