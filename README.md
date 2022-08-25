@@ -6,7 +6,7 @@ A payment system consists of the amount and method by which customers pay their 
 ## Schema Design 
 ![Schema](https://github.com/sumitkk12/Payments/blob/master/images/DB%20Design.png)
 
-## Technology used
+## Technology used 🚀
 <div align="center"><img width="55" src="https://github.com/sumitkk12/Payments/blob/master/images/spring-icon-svgrepo-com.svg"/><img width="55" src="https://github.com/sumitkk12/Payments/blob/master/images/mysql-icon.svg"/><img width="55" src="https://github.com/sumitkk12/Payments/blob/master/images/java-icon.svg"/><img width="55" src="https://github.com/sumitkk12/Payments/blob/master/images/trello-icon.svg"/><img width="55" src="https://github.com/sumitkk12/Payments/blob/master/images/git-icon-logo-svgrepo-com.svg"/><img width="55" src="https://github.com/sumitkk12/Payments/blob/master/images/getpostman-icon.svg"/></div>
 
 ## Create/import database
@@ -14,6 +14,12 @@ A payment system consists of the amount and method by which customers pay their 
 Create a database by importing `mysql-dump.sql`.
 
 ## SETUP 🔧
+- update application.properties and put correct credentials for mysql
+- update application.properties and put correct credentials for SMTP
+- update application.properties and put correct port at which server will be running
+- make sure that Users already exists in the database
+- make sure that MasterBillers already exists.
+- update the localpath mentioned in payments/controller/CSVController.java to save csv files
 
 ## Endpoints 🔗
 
