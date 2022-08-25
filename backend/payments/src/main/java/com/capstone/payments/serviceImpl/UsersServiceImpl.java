@@ -18,8 +18,10 @@ public class UsersServiceImpl implements UsersService {
 	@Override
 	public Users Login(String loginId, String password) {
 		List<Users> obj = usersRepository.findByloginId(loginId);
-		System.out.println(obj.get(0).getPassword());
-		System.out.println(password);
+//		System.out.println(obj.get(0).getPassword());
+//		System.out.println(password);
+		if(obj.size() ==0)
+			return null;
 		if (obj.get(0).getPassword().equals(password.toString())) {
 			return obj.get(0);
 		}
