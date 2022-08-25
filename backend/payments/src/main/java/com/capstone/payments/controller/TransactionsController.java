@@ -75,6 +75,7 @@ public class TransactionsController {
 		
 	}
 	
+
 	@Scheduled(fixedRate=1*60*1000)
 	public void paymentAuto() {
 		List<Bill> list = billRepository.findBystatus("PENDING");
