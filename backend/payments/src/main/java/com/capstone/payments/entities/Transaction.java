@@ -9,11 +9,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "transactions")
-public class Transactions {
+public class Transaction {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="sequenceid")
 	private int sequenceID;
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="transactionsref")
 	private int transactionsRef;
 	@Column(name="date_time")
@@ -23,13 +24,21 @@ public class Transactions {
 	@Column(name="transactiontype")
 	private int transactionType;
 	@Column(name="description")
-	private int description;
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	private String description;
 	@Column(name="billrefno")
 	private int billRefNo;
 	
-	public Transactions(int sequenceID, int transactionsRef, String date_time, int amount, int transactionType,
-			int description, int billRefNo) {
+	public Transaction(String date_time, int amount, int transactionType,String description, int billRefNo) {
+		super();
+		this.date_time = date_time;
+		this.amount = amount;
+		this.transactionType = transactionType;
+		this.description = description;
+		this.billRefNo = billRefNo;
+	}
+	
+	public Transaction(int sequenceID, int transactionsRef, String date_time, int amount, int transactionType,
+			String description, int billRefNo) {
 		super();
 		this.sequenceID = sequenceID;
 		this.transactionsRef = transactionsRef;
@@ -40,7 +49,7 @@ public class Transactions {
 		this.billRefNo = billRefNo;
 	}
 
-	public Transactions() {
+	public Transaction() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -92,11 +101,11 @@ public class Transactions {
 		this.transactionType = transactionType;
 	}
 
-	public int getDescription() {
+	public String getDescription() {
 		return description;
 	}
 
-	public void setDescription(int description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
