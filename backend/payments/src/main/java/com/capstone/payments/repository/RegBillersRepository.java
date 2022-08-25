@@ -9,4 +9,5 @@ import com.capstone.payments.entities.RegBillers;
 public interface RegBillersRepository extends JpaRepository<RegBillers, Integer>{
 	public List<RegBillers> findByaccountNo(int accountNo);
 	public List<RegBillers> findByaccountNoAndBillerCode(int accountNo,String billerCode);
+	public RegBillers findByconsumerNo(String consumerNo);
 }
