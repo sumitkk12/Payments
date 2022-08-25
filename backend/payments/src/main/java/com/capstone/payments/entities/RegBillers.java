@@ -19,7 +19,7 @@ public class RegBillers {
 	@Column(name="billercode")
 	private String billerCode;
 	@Column(name="consumerno")
-	private int consumerNo;
+	private String consumerNo;
 	@Column(name = "autopay")
 	private int autoPay;
 	@Column(name = "autopaylimit")
@@ -42,10 +42,10 @@ public class RegBillers {
 	public void setBillerCode(String billerCode) {
 		this.billerCode = billerCode;
 	}
-	public int getConsumerNo() {
+	public String getConsumerNo() {
 		return consumerNo;
 	}
-	public void setConsumerNo(int consumerNo) {
+	public void setConsumerNo(String consumerNo) {
 		this.consumerNo = consumerNo;
 	}
 	public int getAutoPay() {
@@ -60,7 +60,7 @@ public class RegBillers {
 	public void setAutopayLimit(int autopayLimit) {
 		this.autopayLimit = autopayLimit;
 	}
-	public RegBillers(int billerSeqId, int accountNo, String billerCode, int consumerNo, int autoPay,
+	public RegBillers(int billerSeqId, int accountNo, String billerCode, String consumerNo, int autoPay,
 			int autopayLimit) {
 		super();
 		this.billerSeqId = billerSeqId;

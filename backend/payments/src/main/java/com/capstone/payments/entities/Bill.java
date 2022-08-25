@@ -17,33 +17,13 @@ public class Bill {
 	@Column(name="billercode")
 	private String billerCode;
 	@Column(name = "consumerno")
-	private int consumerNo; 
+	private String consumerNo; 
 	@Column(name = "amount")
 	private int amount;
 	@Column(name = "duedate")
 	private String dueDate;
 	@Column(name = "status")
 	private String status;
-	
-	
-	public Bill() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Bill(int billSeqId, String billerCode, int consumerNo, int amount, String dueDate, String status) {
-		super();
-		this.billSeqId = billSeqId;
-		this.billerCode = billerCode;
-		this.consumerNo = consumerNo;
-		this.amount = amount;
-		this.dueDate = dueDate;
-		this.status = status;
-	}
-	@Override
-	public String toString() {
-		return "Bill [billSeqId=" + billSeqId + ", billerCode=" + billerCode + ", consumerNo=" + consumerNo
-				+ ", amount=" + amount + ", dueDate=" + dueDate + ", status=" + status + "]";
-	}
 	public int getBillSeqId() {
 		return billSeqId;
 	}
@@ -56,10 +36,10 @@ public class Bill {
 	public void setBillerCode(String billerCode) {
 		this.billerCode = billerCode;
 	}
-	public int getConsumerNo() {
+	public String getConsumerNo() {
 		return consumerNo;
 	}
-	public void setConsumerNo(int consumerNo) {
+	public void setConsumerNo(String consumerNo) {
 		this.consumerNo = consumerNo;
 	}
 	public int getAmount() {
@@ -80,4 +60,25 @@ public class Bill {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public Bill(int billSeqId, String billerCode, String consumerNo, int amount, String dueDate, String status) {
+		super();
+		this.billSeqId = billSeqId;
+		this.billerCode = billerCode;
+		this.consumerNo = consumerNo;
+		this.amount = amount;
+		this.dueDate = dueDate;
+		this.status = status;
+	}
+	@Override
+	public String toString() {
+		return "Bill [billSeqId=" + billSeqId + ", billerCode=" + billerCode + ", consumerNo=" + consumerNo
+				+ ", amount=" + amount + ", dueDate=" + dueDate + ", status=" + status + "]";
+	}
+	public Bill() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
 }
